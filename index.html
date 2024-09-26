@@ -32,6 +32,7 @@
     </style>
 
     <script>
+
         /** 
          * @param {string} value
          * @return {string}
@@ -42,8 +43,8 @@
             /** @type {number[]} */
             const encodedCode = [];
 
-            [...value].reduce((prevCharCode, currChar) => {
-                const code = currChar.charCodeAt()
+            value.split('').reduce((prevCharCode, currChar) => {
+                const code = currChar.charCodeAt();
                 encodedCode.push(prevCharCode ^ code);
                 return code;
             }, 0);
@@ -57,7 +58,8 @@
          * @return {string}
          **/
         function encodeChar(charCode) {
-            return charCode.toString(2).replaceAll('1', '啊').replaceAll('0', '巴');
+            const string = charCode.toString(4).replaceAll('3', '阿').replaceAll('2', '吧').replaceAll('1', '巴').replaceAll('0', '啊');
+            return string[0] == '阿' ? string : '啊' + string;
         }
         /** 
          * @param {string} value
@@ -86,7 +88,7 @@
          * @return {number}
          **/
         function decodeChar(segment) {
-            return Number("0b" + segment.replaceAll('啊', '1').replaceAll('巴', '0'), 2);
+            return Number("0b" + segment.replaceAll('阿', '11').replaceAll('吧', '10').replaceAll('巴', '01').replaceAll('啊', '00'));
         }
     </script>
 </head>
