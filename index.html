@@ -59,7 +59,7 @@
          **/
         function encodeChar(charCode) {
             const string = charCode.toString(4).replaceAll('3', '阿').replaceAll('2', '吧').replaceAll('1', '巴').replaceAll('0', '啊');
-            return string[0] == '阿' ? string : '啊' + string;
+            return (string[0] == '阿' | string[0] == '啊') ? string : '啊' + string;
         }
         /** 
          * @param {string} value
